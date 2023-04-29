@@ -1,22 +1,27 @@
 // https://openapi.programming-hero.com/api/phones?search=iphone
 
 const phone = async () => {
-    const input = document.getElementById('input').value
+  let input = document.getElementById("input").value;
   const url = `https://openapi.programming-hero.com/api/phones?search=${input}`;
   const data = await fetch(url);
-  input = ''
+ 
   const res = await data.json();
   display(res);
 };
 
 const display = (e) => {
-    const main = document.getElementById('main')
-    main.innerHTML = ''
+  const main = document.getElementById("main");
+  main.innerText = "";
   console.log(e.data);
-  e.data.forEach(phone => {
-    const div = document.createElement('div')
+  e.data = e.data.slice(0, 5);
+const none = document.getElementById('none')
+  {
+    e.data.length === 0 ?  none.classList.remove('d-none'):none.classList.add('d-none')
+  }
+  e.data.forEach((phone) => {
+    const div = document.createElement("div");
 
-    div.innerHTML=`
+    div.innerHTML = `
     <div class="col">
     <div class="card">
       <img style="width: 18rem" src="${phone.image}" class="card-img-top" alt="...">
@@ -27,9 +32,8 @@ const display = (e) => {
     </div>
   </div>
     
-    `
-    main.appendChild(div)
-    console.log(phone.phone_name);
-  })
+    `;
+    main.appendChild(div);
+  
+  });
 };
-phone();
