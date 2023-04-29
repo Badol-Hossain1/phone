@@ -19,6 +19,9 @@ const none = document.getElementById('none')
   {
     e.data.length === 0 ?  none.classList.remove('d-none'):none.classList.add('d-none')
   }
+  if(!e.data.length){
+    toggle(false)
+  }
   e.data.forEach((phone) => {
     const div = document.createElement("div");
 
