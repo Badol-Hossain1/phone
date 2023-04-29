@@ -1,6 +1,7 @@
 // https://openapi.programming-hero.com/api/phones?search=iphone
 
 const phone = async () => {
+    toggle(true)
   let input = document.getElementById("input").value;
   const url = `https://openapi.programming-hero.com/api/phones?search=${input}`;
   const data = await fetch(url);
@@ -33,7 +34,19 @@ const none = document.getElementById('none')
   </div>
     
     `;
+
+    toggle(false)
     main.appendChild(div);
   
   });
 };
+
+
+const toggle = (isLoading)=> {
+const loader = document.getElementById('loader')
+if(isLoading){
+    loader.classList.remove('d-none')
+}else{
+    loader.classList.add('d-none')
+}
+}
